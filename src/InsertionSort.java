@@ -1,28 +1,21 @@
-public class InsertionSort extends Sort{
-    private int indexToChange = 0;
-    private int valueToChange = 0;
-    private int keeper;
+public class InsertionSort extends Sort {
 
     @Override
     public void sort() {
-        for(int i = 1;i<list.length;i++){
-            for(int j = 0;j<list.length;j++){
-                if(list[i] < list[j]){
-                    slideList(i,j);
-                    break;
+        for (int i = 0; i < list.length; i++) {
+            int seperator = i;
+            int keeper;
+            for (int j = (seperator); j >= 0; j--) {
+                if (list[seperator] < list[j]) {
+                    keeper = list[j];
+                    list[j] = list[seperator];
+                    list[seperator] = keeper;
                 }
             }
+
         }
 
         showList();
     }
-    private void slideList(int i,int limit){
-        int keeper;
-        while(i != limit){
-            keeper = list[(i-1)];
-            list[(i-1)] = list[i];
-            list[i] = keeper;
-            i--;
-        }
-    }
+
 }
